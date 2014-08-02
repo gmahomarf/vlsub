@@ -1583,14 +1583,16 @@ function download_subtitles()
 		vlc.msg.err("[VLsub] Unable to remove temp: "..tmpFileName)
 	end
 	
+	--[[
 	subfileURI = vlc.strings.make_uri(target)
 	
 	if not subfileURI then
 		subfileURI = make_uri(target)
 	end
+	]]
 	
 	-- load subtitles
-	if add_sub(subfileURI) then 
+	if add_sub(target) then 
 		message = success_tag(lang["mess_loaded"]) .. message
 	else
 		message = error_tag(lang["mess_not_load"]) .. message
